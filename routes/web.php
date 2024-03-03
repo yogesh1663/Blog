@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,7 @@ Route::get('/verify/{token}', [AuthController::class, 'verify'])->name('verify')
 Route::get('/reset-password/{token}', [AuthController::class, 'changePassword'])->name('view.change.password');
 
 Route::post('/reset-password/{token}', [AuthController::class, 'changePasswordPost'])->name('post.password.change');
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

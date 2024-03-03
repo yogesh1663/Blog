@@ -42,13 +42,12 @@
 
 <body>
 
-    <main>
-        {{ $slot }}
-    </main>
-    <!-- End #main -->
+    <x-admin.header />
+    <x-admin.sidebar />
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    {{ $slot }}
+
+    <x-admin.footer />
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('admin-assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
