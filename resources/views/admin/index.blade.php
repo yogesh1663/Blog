@@ -1,8 +1,4 @@
 <x-auth.admin-layouts>
-
-
-
-
     <main id="main" class="main">
 
         <div class="pagetitle">

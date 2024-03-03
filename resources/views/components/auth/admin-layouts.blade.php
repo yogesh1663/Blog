@@ -45,7 +45,10 @@
     <x-admin.header />
     <x-admin.sidebar />
 
-    {{ $slot }}
+
+    <div style="height: 100vh">
+        {{ $slot }}
+    </div>
 
     <x-admin.footer />
 
