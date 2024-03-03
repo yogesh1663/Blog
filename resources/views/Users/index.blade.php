@@ -5,14 +5,15 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="index.html">Users</a></li>
+                    <li class="breadcrumb-item active">Index</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">All users <a href="" class="float-end btn btn-primary btn-sm">Add User</a>
+                <h5 class="card-title">All users <a href="{{ route('users.create') }}"
+                        class="float-end btn btn-primary btn-sm">Add User</a>
                 </h5>
 
 
@@ -33,12 +34,14 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>not set</td>
-                                <td class="d-flex justify-center align-content-center gap-3">
+                                <td>{{ $user->status == '0' ? 'Inactive' : 'Active' }}</td>
+                                <td>
                                     <a href="" class="btn btn-success">Edit</a>
-                                    <form action="">
+                                    <a href="" class="btn btn-danger"
+                                        onclick="return confirm('Do you want to delete?')">Delete</a>
+                                    {{-- <form action="" onclick="return confirm(Do you want to delete this user?)">
                                         <button type="submit" class="float- btn btn-danger">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
