@@ -16,10 +16,8 @@
                         <div class="card mb-3">
 
                             <div class="card-body ">
-                                @if (session('success'))
-                                    <div class="alert alert-success mt-2">{{ session('success') }}</div>
-                                @endif
                                 <div class="pt-4 pb-2">
+                                    <x-msg />
                                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                     <p class="text-center small">Enter your username & password to login</p>
                                 </div>

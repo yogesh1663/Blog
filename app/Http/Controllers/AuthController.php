@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPasswordMail;
 use App\Models\User;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
@@ -81,6 +82,45 @@ class AuthController extends Controller
             }
         } else {
             return redirect()->back()->with('error', 'Invalid Email or Password');
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $user = User::where('email', $request->email)->get()->first();
+        if (!empty($user)) {
+            $user->remember_token = Str::random(20);
+            $user->save();
+            Mail::to($user->email)->send(new ForgotPasswordMail($user->name, $user->remember_token));
+            return redirect()->route('login')->with('success', 'An Reset email has been sent to your mail.');
+        } else {
+            return redirect()->back()->with('error', 'Email not found.');
+        }
+    }
+
+    public function changePassword($token)
+    {
+        $user = User::where('remember_token', $token)->get();
+        if (!empty($user)) {
+            return view('Auth.change-password', ['token' => $token]);
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong please try again.');
+        }
+    }
+
+    public function changePasswordPost(Request $request, $token)
+    {
+        $user = User::where('remember_token', $token)->first();
+        if (!empty($user)) {
+            if ($request->password == $request->cpassword) {
+                $user->password = Hash::make($request->password);
+                $user->save();
+                return redirect()->route('login')->with('success', 'Password changed Successfully');
+            } else {
+                return redirect()->back()->with('error', 'unmatched password');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong please try again.');
         }
     }
 }
