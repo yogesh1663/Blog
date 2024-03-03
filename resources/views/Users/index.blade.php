@@ -1,15 +1,7 @@
 <x-auth.admin-layouts>
     <main id="main" class="main">
 
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Users</a></li>
-                    <li class="breadcrumb-item active">Index</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
+        <x-admin.page-title />
         <div class="card">
             <div class="card-body">
                 <x-msg />

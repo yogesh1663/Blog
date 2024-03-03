@@ -4,7 +4,8 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link @if (Request::segment(1) != 'dashboard') collapsed @endif" href="index.html">
+                <a class="nav-link @if (Request::segment(1) != 'dashboard') collapsed @endif"
+                    href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -19,7 +20,8 @@
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
+                <a class="nav-link @if (Request::segment(1) != 'category') collapsed @endif"
+                    href="{{ route('category.index') }}">
                     <i class="bi bi-question-circle"></i>
                     <span>Category</span>
                 </a>

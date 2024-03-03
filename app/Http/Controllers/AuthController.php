@@ -69,7 +69,7 @@ class AuthController extends Controller
         $remember = $request->remember;
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             if (!empty(Auth::user()->email_verified_at)) {
-                return view('admin.index');
+                return redirect()->route('admin.dashboard');
             } else {
                 $auth_id = Auth::user()->id;
                 Auth::logout();
