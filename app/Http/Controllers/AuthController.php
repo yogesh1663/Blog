@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RegisterMail;
 use App\Models\User;
+use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -64,5 +65,22 @@ class AuthController extends Controller
     }
     public function loginUser(Request $request)
     {
+        $remember = $request->remember;
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+            if (!empty(Auth::user()->email_verified_at)) {
+                return ('welcome');
+            } else {
+                $auth_id = Auth::user()->id;
+                Auth::logout();
+                $user = User::findOrFail($auth_id);
+                $token = Str::random(20);
+                $user->remember_token = $token;
+                $ss = $user->save();
+                Mail::to($user->email)->send(new RegisterMail($user->name, $user->remember_token));
+                return redirect()->route('login')->with('success', 'A verification link has been sent to your mail. Please vertify your Email before login');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Invalid Email or Password');
+        }
     }
 }
