@@ -69,7 +69,7 @@ class AuthController extends Controller
         $remember = $request->remember;
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             if (!empty(Auth::user()->email_verified_at)) {
-                return ('welcome');
+                return view('admin.index');
             } else {
                 $auth_id = Auth::user()->id;
                 Auth::logout();
@@ -122,5 +122,11 @@ class AuthController extends Controller
         } else {
             return redirect()->back()->with('error', 'Something went wrong please try again.');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

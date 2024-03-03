@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +35,9 @@ Route::get('/reset-password/{token}', [AuthController::class, 'changePassword'])
 Route::post('/reset-password/{token}', [AuthController::class, 'changePasswordPost'])->name('post.password.change');
 
 
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+Route::group(['middleware' => 'adminuser'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
