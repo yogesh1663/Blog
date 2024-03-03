@@ -27,9 +27,9 @@
                 </a>
             </li><!-- End Category Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
+                <a class="nav-link collapsed" href="{{ route('post.index') }}">
                     <i class="bi bi-question-circle"></i>
-                    <span>Blog</span>
+                    <span>Post</span>
                 </a>
             </li><!-- End Category Page Nav -->
 
