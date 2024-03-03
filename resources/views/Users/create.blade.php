@@ -12,6 +12,7 @@
         </div><!-- End Page Title -->
         <div class="card">
             <div class="card-body">
+
                 <h5 class="card-title">Add user <a href="{{ route('users.index') }}"
                         class="float-end btn btn-primary btn-sm">Back</a>
                 </h5>
@@ -21,25 +22,27 @@
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputText">
+                            <input type="text" class="form-control" id="inputText" name="name"
+                                value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail">
+                            <input type="email" class="form-control" id="inputEmail" name="email"
+                                value="{{ old('email') }}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword">
+                            <input type="password" class="form-control" id="inputPassword" name="password">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-2 col-form-label">Status</label>
                         <div class="col-sm-10">
-                            <select id="inputState" class="form-select">
+                            <select id="inputState" class="form-select" name="status">
                                 <option selected>Choose...</option>
                                 <option value="0">Inactive</option>
                                 <option value="1">Active</option>
