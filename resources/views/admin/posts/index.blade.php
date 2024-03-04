@@ -14,10 +14,12 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">slug</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Meta Title</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Tags</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Mega Description</th>
                             <th scope="col">Mega Keywords</th>
                             <th scope="col">Status</th>
@@ -25,21 +27,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        {{-- @foreach ($posts as $post)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->title }}</td>
-                                <td>{{ $category->slug }}</td>
-                                <td>{{ $category->meta_title }}</td>
-                                <td>{{ $category->meta_description }}</td>
-                                <td>{{ $category->meta_keywords }}</td>
-                                <td>{{ $category->status == 0 ? 'inactive' : 'active' }}</td>
+                                <td>{{ $post->name }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->slug }}</td>
+                                <td>{{ $post->meta_title }}</td>
+                                <td>{{ $post->meta_description }}</td>
+                                <td>{{ $post->meta_keywords }}</td>
+                                <td>{{ $post->status == 0 ? 'inactive' : 'active' }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('category.edit', $category->id) }}"
+                                        <a href="{{ route('post.edit', $post->id) }}"
                                             class="btn btn-success btn-sm">Edit</a>
-                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                        <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="float- btn btn-danger btn-sm">Delete</button>
@@ -47,12 +49,12 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
                 <div class="d-flex justify-content-center">
-                    {{ $categories->links() }}
+                    {{-- {{ $posts->links() }} --}}
                 </div>
             </div>
         </div>

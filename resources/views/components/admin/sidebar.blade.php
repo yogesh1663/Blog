@@ -27,9 +27,16 @@
                 </a>
             </li><!-- End Category Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('post.index') }}">
+                <a class="nav-link @if (Request::segment(1) != 'post') collapsed @endif" href="{{ route('post.index') }}">
                     <i class="bi bi-question-circle"></i>
                     <span>Post</span>
+                </a>
+            </li><!-- End Category Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link @if (Request::segment(1) != 'tag') collapsed @endif" href="{{ route('post.index') }}">
+                    <i class="bi bi-question-circle"></i>
+                    <span>Tags</span>
                 </a>
             </li><!-- End Category Page Nav -->
 

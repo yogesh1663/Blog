@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->string('title');
+            $table->string('slug');
+            $table->string('image');
+            $table->string('meta_description');
+            $table->string('meta_keywords');
+            $table->tinyInteger('status')->default(0)->comment('1=>published 0=> pending');
             $table->timestamps();
         });
     }
