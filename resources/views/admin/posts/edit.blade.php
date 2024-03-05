@@ -1,4 +1,8 @@
 <x-auth.admin-layouts>
+    @section('style')
+        <!-- Load the stylesheet -->
+        <link rel="stylesheet" href="{{ asset('admin-assets/tagsinput/dist/bootstrap-tagsinput.css') }}" />
+    @endsection
     <main id="main" class="main">
         <x-admin.page-title />
         <div class="card">
@@ -49,7 +53,16 @@
                     </div>
                     <div class="row mb-3">
                         <label for="tags" class="col-sm-2 col-form-label">Tags</label>
-
+                        <div class="col-sm-10">
+                            @php
+                                $arr = '';
+                                foreach ($post->tags as $tag) {
+                                    $arr .= $tag->name . ', ';
+                                }
+                            @endphp
+                            <input type="text" data-role="tagsinput" id="tags" name="tags"
+                                value="{{ $arr }} " />
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <label for="image" class="col-sm-2 col-form-label">File Upload</label>
@@ -118,5 +131,11 @@
         </div>
 
     </main><!-- End #main -->
-
+    @section('script')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="{{ asset('admin-assets/tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+        <script>
+            $("#tags").tagsinput();
+        </script>
+    @endsection
 </x-auth.admin-layouts>

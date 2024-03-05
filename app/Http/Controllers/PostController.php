@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(3);
+
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
@@ -65,6 +67,7 @@ class PostController extends Controller
             'meta_keywords' => $request->meta_keywords,
             'status' => $request->status
         ]);
+        Tag::insertDeleteTag($query->id, $request->tags);
 
         if ($query) {
             return redirect()->route('post.index')->with('success', 'Post has been successfully created');
@@ -87,7 +90,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::get(['id', 'title']);
-        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
+        $tags = Tag::where('post_id', $post->id);
+        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -95,7 +99,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-
+        // dd($request->all());
 
         $request->validate([
             'title' => 'required|string',
@@ -133,6 +137,8 @@ class PostController extends Controller
         $post->meta_keywords = $request->meta_keywords;
         $post->status = $request->status;
         $query = $post->save();
+
+        Tag::insertDeleteTag($post->id, $request->tags);
 
         if ($query) {
             return redirect()->route('post.index')->with('success', 'Post has been successfully updated');

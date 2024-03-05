@@ -33,7 +33,11 @@
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->slug }}</td>
                                 <td>{{ $post->category->name }}</td>
-                                <td>tags</td>
+                                <td>
+                                    @foreach ($post->tags as $tag)
+                                        {{ $tag->name . ',' }}
+                                    @endforeach
+                                </td>
                                 <td><img src="{{ asset('storage/post/' . $post->image) }}" alt="image" height="100"
                                         width="100">
                                 </td>
