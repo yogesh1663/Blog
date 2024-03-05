@@ -146,6 +146,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if ($post->image) {
+            if (Storage::exists('public/post' . $post->image)) {
+                Storage::delete('public/post' . $post->image);
+            }
+        }
         $query = $post->delete();
         if ($query) {
             return redirect()->route('post.index')->with('success', 'Post has been successfully deleted.');
