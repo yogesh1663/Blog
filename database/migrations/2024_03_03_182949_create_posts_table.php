@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image');
+            $table->string('description');
             $table->string('meta_description');
             $table->string('meta_keywords');
             $table->tinyInteger('status')->default(0)->comment('1=>published 0=> pending');

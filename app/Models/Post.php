@@ -14,6 +14,8 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+
+    protected $fillable = ['user_id', 'title', 'slug', 'category_id', 'image', 'description', 'meta_description', 'meta_keywords', 'status'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
