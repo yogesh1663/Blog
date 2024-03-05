@@ -116,8 +116,8 @@ class PostController extends Controller
             $filename = time() . '.' . $request->image->extension();
             $request->image->storeAs('public/post/', $filename);
             if ($post->image) {
-                if (Storage::exists('public/post' . $post->image)) {
-                    Storage::delete('public/post' . $post->image);
+                if (Storage::exists('public/post/' . $post->image)) {
+                    Storage::delete('public/post/' . $post->image);
                 }
             }
         }
@@ -147,8 +147,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if ($post->image) {
-            if (Storage::exists('public/post' . $post->image)) {
-                Storage::delete('public/post' . $post->image);
+            if (Storage::exists('public/post/' . $post->image)) {
+                Storage::delete('public/post/' . $post->image);
             }
         }
         $query = $post->delete();
