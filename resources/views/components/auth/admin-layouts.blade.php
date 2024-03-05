@@ -27,9 +27,12 @@
     <link href="{{ asset('admin-assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
+    @yield('style')
     <!-- Template Main CSS File -->
     <link href="{{ asset('admin-assets/css/style.css') }}" rel="stylesheet">
+
+
+
 
 
 </head>
@@ -59,6 +62,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('admin-assets/js/main.js') }}"></script>
 
+    @yield('script')
 
 
 </body>
