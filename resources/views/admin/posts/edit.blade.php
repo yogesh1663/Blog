@@ -71,7 +71,7 @@
                             @error('image')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
-                            <img src="{{ asset('storage/post/' . $post->image) }}" alt="">
+                            <img src="{{ asset('storage/post/' . $post->image) }}" alt="" width="50%">
                         </div>
 
                     </div>

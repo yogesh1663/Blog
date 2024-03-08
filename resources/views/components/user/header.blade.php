@@ -1,22 +1,32 @@
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
-        <div class="row align-items-center px-3">
-            <div class="col-lg-6 text-center text-lg-left">
-                <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
-                <h1 class="display-3 font-weight-bold text-white">
-                    New Approach to Kids Education
-                </h1>
-                <p class="text-white mb-4">
-                    Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed
-                    sit. Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed
-                    ipsum at ipsum nonumy amet. Clita lorem dolore sed stet et est justo
-                    dolore.
-                </p>
-                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center bg-light px-lg-5">
+            <div class="col-12 col-md-8">
+                <div class="d-flex justify-content-between">
+                    <div class="bg-primary text-white text-center py-2" style="width: 100px;">Tranding</div>
+                    <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3"
+                        style="width: calc(100% - 100px); padding-left: 90px;">
+                        <div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos
+                                sed, et sanctus dolor diam eos</a></div>
+                        <div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod
+                                et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est
+                                erat</a></div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <img class="img-fluid mt-5" src="{{ asset('user-assets/img/header.png') }}" alt="" />
+            <div class="col-md-4 text-right d-none d-md-block">
+                Monday, January 01, 2045
+            </div>
+        </div>
+        <div class="row align-items-center py-2 px-lg-5">
+            <div class="col-lg-4">
+                <a href="" class="navbar-brand d-none d-lg-block">
+                    <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                <img class="img-fluid" src="img/ads-700x70.jpg" alt="">
             </div>
         </div>
     </div>
-    <!-- Header End -->
+    <!-- Topbar End -->

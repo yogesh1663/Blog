@@ -8,7 +8,7 @@
                         class="float-end btn btn-primary btn-sm">Add Post</a>
                 </h5>
 
-                <x-admin.search-box />
+
                 <!-- Table with stripped rows -->
                 <table class="table table-striped">
                     <thead>
@@ -20,8 +20,8 @@
                             <th scope="col">Tags</th>
                             <th scope="col">Image</th>
                             <th scope="col">Description</th>
-                            {{-- <th scope="col">Mega Description</th>
-                            <th scope="col">Mega Keywords</th> --}}
+                            <th scope="col">Mega Description</th>
+                            <th scope="col">Mega Keywords</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -42,9 +42,9 @@
                                         width="100">
                                 </td>
                                 <td>{{ $post->description }}</td>
-                                {{-- <td>{{ $post->meta_description }}</td>
-                                <td>{{ $post->meta_keywords }}</td> --}}
-                                <td>{{ $post->status == 0 ? 'pending' : 'published' }}</td>
+                                <td>{{ $post->meta_description }}</td>
+                                <td>{{ $post->meta_keywords }}</td>
+                                <td>{{ $post->status == 0 ? 'inactive' : 'active' }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="{{ route('post.edit', $post->id) }}"
@@ -68,5 +68,6 @@
         </div>
 
     </main><!-- End #main -->
+
 
 </x-auth.admin-layouts>

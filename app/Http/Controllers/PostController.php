@@ -164,4 +164,8 @@ class PostController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
+
+    // public function search()
+    // {
+    // }
 }
